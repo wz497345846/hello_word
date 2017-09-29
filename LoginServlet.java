@@ -1,4 +1,4 @@
-package com.bjsxt.servlet;
+package top.gabrielz.servlet;
 
 import java.io.IOException;
 
@@ -8,46 +8,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /*
- * 	×÷ÓÃÓò£º
- * 		pageContext:µ±Ç°Ò³ÃæÄÚÓĞĞ§¡£
- * 		request:µ±´ÎÇëÇóÄÚÓĞĞ§£¬½â¾öÁËÒ»´ÎÇëÇóµÄ²»Í¬ServletµÄÊı¾İ¹²ÏíÎÊÌâ¡£
- * 		session£ºµ±´Î»á»°ÄÚÓĞĞ§¡£½â¾öµÄÒ»¸öÓÃ»§µÄ²»Í¬ÇëÇóµÄÊı¾İ¹²ÏíÎÊÌâ¡£
- * 		application:Ò»¸öÏîÄ¿Ö»ÓĞÒ»¸ö£¬ÈÎÒâÎ»ÖÃ»ñÈ¡µÄ¶¼ÊÇÍ¬Ò»¸ö¡£½â¾öµÄÊÇ²»Í¬ÓÃ»§µÄÊı¾İ¹²ÏíÎÊÌâ¡£
+ * 	ä½œç”¨åŸŸï¼š
+ * 		pageContext:å½“å‰é¡µé¢å†…æœ‰æ•ˆã€‚
+ * 		request:å½“æ¬¡è¯·æ±‚å†…æœ‰æ•ˆï¼Œè§£å†³äº†ä¸€æ¬¡è¯·æ±‚çš„ä¸åŒServletçš„æ•°æ®å…±äº«é—®é¢˜ã€‚
+ * 		sessionï¼šå½“æ¬¡ä¼šè¯å†…æœ‰æ•ˆã€‚è§£å†³çš„ä¸€ä¸ªç”¨æˆ·çš„ä¸åŒè¯·æ±‚çš„æ•°æ®å…±äº«é—®é¢˜ã€‚
+ * 		application:ä¸€ä¸ªé¡¹ç›®åªæœ‰ä¸€ä¸ªï¼Œä»»æ„ä½ç½®è·å–çš„éƒ½æ˜¯åŒä¸€ä¸ªã€‚è§£å†³çš„æ˜¯ä¸åŒç”¨æˆ·çš„æ•°æ®å…±äº«é—®é¢˜ã€‚
  * */
 public class LoginServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		//ÉèÖÃÇëÇó±àÂë¸ñÊ½
+		//è®¾ç½®è¯·æ±‚ç¼–ç æ ¼å¼
 			req.setCharacterEncoding("utf-8");
-		//ÉèÖÃÏàÓ¦±àÂë¸ñÊ½
+		//è®¾ç½®ç›¸åº”ç¼–ç æ ¼å¼
 			resp.setCharacterEncoding("utf-8");
 			resp.setContentType("text/html;charset=utf-8");
-		//»ñÈ¡ÇëÇóĞÅÏ¢
-			//»ñÈ¡ÇëÇóĞĞĞÅÏ¢
-			//»ñÈ¡ÓÃ»§ÇëÇóÊı¾İ
+		//è·å–è¯·æ±‚ä¿¡æ¯
+			//è·å–è¯·æ±‚è¡Œä¿¡æ¯
+			//è·å–ç”¨æˆ·è¯·æ±‚æ•°æ®
 			String name=req.getParameter("uname");
 			String pwd=req.getParameter("pwd");
 			System.out.println(name+":"+pwd);
-		//´¦ÀíÇëÇóĞÅÏ¢
-			//ÒµÎñÂß¼­´¦Àí
-			if("ÕÅÈı".equals(name) && "123".equals(pwd)){
-				//ÊµÏÖÈıÌìÃâµÇÂ½
-					//´´½¨CookieĞÅÏ¢
+		//å¤„ç†è¯·æ±‚ä¿¡æ¯
+			//ä¸šåŠ¡é€»è¾‘å¤„ç†
+			if("å¼ ä¸‰".equals(name) && "123".equals(pwd)){
+				//å®ç°ä¸‰å¤©å…ç™»é™†
+					//åˆ›å»ºCookieä¿¡æ¯
 					Cookie c=new Cookie("num", "20170926");
-					c.setMaxAge(3600*3*24);//ÉèÖÃcookieÓĞĞ§ÆÚ
+					c.setMaxAge(3600*3*24);//è®¾ç½®cookieæœ‰æ•ˆæœŸ
 					c.setPath("/servlet/cookie");
-					//ÏìÓ¦CookieĞÅÏ¢
+					//å“åº”Cookieä¿¡æ¯
 					resp.addCookie(c);
-				//ÏìÓ¦´¦Àí½á¹û
-				//ÇëÇó×ª·¢(½«Êı¾İ´æ´¢µ½×÷ÓÃÓòÖĞ)
-					//½«ÕÅÈıµÄĞÅÏ¢´æ´¢µ½×÷ÓÃÓòÖĞ
+				//å“åº”å¤„ç†ç»“æœ
+				//è¯·æ±‚è½¬å‘(å°†æ•°æ®å­˜å‚¨åˆ°ä½œç”¨åŸŸä¸­)
+					//å°†å¼ ä¸‰çš„ä¿¡æ¯å­˜å‚¨åˆ°ä½œç”¨åŸŸä¸­
 					req.setAttribute("name",name);
 					req.getRequestDispatcher("main.jsp").forward(req, resp);
-			}else{//ÓÃ»§Ãû»òÕßÃÜÂë²»¶Ô
-				//´´½¨´íÎóÌáÊ¾Óï
-				req.setAttribute("str", "ÓÃ»§Ãû»òÕßÃÜÂë´íÎó");
-				//ÇëÇó×ª·¢µÇÂ¼Ò³Ãæ
+			}else{//ç”¨æˆ·åæˆ–è€…å¯†ç ä¸å¯¹
+				//åˆ›å»ºé”™è¯¯æç¤ºè¯­
+				req.setAttribute("str", "ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯");
+				//è¯·æ±‚è½¬å‘ç™»å½•é¡µé¢
 				req.getRequestDispatcher("login.jsp").forward(req, resp);
 				
 			}
